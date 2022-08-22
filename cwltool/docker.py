@@ -345,6 +345,8 @@ class DockerCommandLineJob(ContainerCommandLineJob):
             runtime = ["podman", "run", "-i", "--userns=keep-id"]
         else:
             runtime = ["docker", "run", "-i"]
+        if getattr(self, 'docker_gpu_flag', False):
+            runtime.append('--gpus=all')
         self.append_volume(
             runtime, os.path.realpath(self.outdir), self.builder.outdir, writable=True
         )

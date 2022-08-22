@@ -437,6 +437,9 @@ class SingularityCommandLineJob(ContainerCommandLineJob):
             "--ipc",
             "--cleanenv",
         ]
+
+        if getattr(self, 'docker_gpu_flag', False):
+            runtime.append('--nv')
         if singularity_supports_userns():
             runtime.append("--userns")
         else:

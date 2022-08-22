@@ -229,3 +229,16 @@ $graph:
       doc: |
         Maximum number of GPU devices to request.  If not specified,
         same as `cudaDeviceCountMin`.
+
+- name: DockerGpuRequirement
+  type: record
+  inVocab: false
+  extends: cwl:ProcessRequirement
+  fields:
+    class:
+      type: string
+      doc: "Always 'DockerGpuRequirement'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+
